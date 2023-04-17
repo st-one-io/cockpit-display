@@ -1,0 +1,47 @@
+.displays-box {
+    background: white;
+    padding: 10px;
+    border: 1px solid white;
+    margin: 3px;
+}
+
+.highlight-canvas {
+    background: lightblue;
+}
+
+#settings-group {
+    overflow: visible;
+}
+
+.monitor {
+    background-color: transparent;
+    border: solid;
+    color: #8088da;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+.monitor:hover {
+    box-shadow:0px 0px 10px 0 rgba(0, 0, 0, 0.24), inset 0px 0px 3px 0px rgba(0, 0, 0, 0.72)
+    
+} 
+.button-rotate-right span{
+    display: inline-block;
+    transform: rotate(90deg);
+}
+.button-rotate-normal span{
+    display: inline-block;
+    transform: rotate(0deg);
+}
+.button-rotate-inverted span{
+    display: inline-block;
+    transform: rotate(180deg);
+}
+.button-rotate-left span{
+    display: inline-block;
+    transform: rotate(-90deg);
+}

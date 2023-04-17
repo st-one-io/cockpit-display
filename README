@@ -1,0 +1,33 @@
+This plugin uses the Xrandr command kit to adjust display settings (like resolution, rotation a.s.o)
+
+Example of how xrandr works 
+    To invert the screen orientation: 
+    DISPLAY=:0 xrandr --output HDMI-1 --rotate inverted
+	
+Problems:
+	-We have to rewrite the webdisplay to listen for resolution changes
+	-Currently the DISPLAY env. variable is hardcoded because it's missing on ST-One image
+	-Configuration has to be saved on /etc/X11/xorg.conf.d/10-monitor.conf
+		Example of config file:
+
+Section "Monitor"
+	Identifier "HDMI-1"
+	Modeline "1280x1024_60.00"  109.00  1280 1368 1496 1712 1024 1027 1034 1063 -hsync +vsync
+	Option "PreferredMode" "1280x1024_60.00"
+	Option "Rotate" "right"
+EndSection
+
+Section "Screen"
+	Identifier "Screen0"
+	Monitor "HDMI-1"
+	DefaultDepth 24
+	SubSection "Display"
+		Modes "1280x1024_60.00"
+	EndSubSection
+EndSection
+
+Section "Device"
+	Identifier "Device0"
+	Driver "modesetting"
+EndSection		
+	

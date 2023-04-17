@@ -1,0 +1,18 @@
+{
+    "version": "156",
+    "name": "display",
+    "requires": {
+	"cockpit": "122"
+    },
+
+    "menu": {
+        "index": {
+            "label": "Display",
+            "order": 51
+        }
+    },
+
+    "hacks": {
+        
+    }
+}
