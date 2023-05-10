@@ -1,3 +1,9 @@
+body {
+    width: 70%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
 .displays-box {
     background: white;
     padding: 10px;
@@ -11,6 +17,7 @@
 
 #settings-group {
     overflow: visible;
+    vertical-align: middle
 }
 
 .monitor {
@@ -24,24 +31,119 @@
     font-size: 16px;
     margin: 2px 2px;
     cursor: pointer;
+    width: 100px;
+    height: 80px
 }
 .monitor:hover {
     box-shadow:0px 0px 10px 0 rgba(0, 0, 0, 0.24), inset 0px 0px 3px 0px rgba(0, 0, 0, 0.72)
-    
-} 
+}
+
+.display-box {
+    overflow-y: auto
+}
+
 .button-rotate-right span{
     display: inline-block;
     transform: rotate(90deg);
 }
+j
 .button-rotate-normal span{
     display: inline-block;
     transform: rotate(0deg);
 }
+
 .button-rotate-inverted span{
     display: inline-block;
     transform: rotate(180deg);
 }
+
 .button-rotate-left span{
     display: inline-block;
     transform: rotate(-90deg);
+}
+
+#advanced-button {
+    padding: 0px;
+    text-indent: none;
+    text-align: left;
+}
+
+#display-rate {
+    display: none;
+    overflow: hidden;
+}
+
+#system-info-domain {
+    padding: 0px;
+    text-indent: none;
+    text-align: left;
+}
+
+td {
+    padding: 4px;
+}
+
+.td-left {
+    width: 15%;
+    text-align: right
+}
+
+.td-right {
+    width: 80%;
+    text-align: right;
+}
+
+#td-rate {
+    text-indent: 5px;
+}
+
+.pf-c-form-control {
+    --dropdown-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='8'%3E%3Cpath fill='%23151515' d='M18.804 1h8.392c.58 0 .87.701.46 1.112L23.46 6.31a.653.653 0 01-.922 0l-4.194-4.197A.651.651 0 0118.805 1z'/%3E%3C/svg%3E");
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    --dropdown-background: var(--pf-global--BackgroundColor--100);
+    max-width: 100%;
+    padding: .25em 2.5em calc(.25em - 1px) .5em;
+    border: 1px solid var(--pf-global--BorderColor--300);
+    border-bottom-color: var(--pf-global--Color--200);
+    background: var(--dropdown-image) no-repeat 100% 50%,var(--dropdown-background);
+    border-radius: 3px;
+    color: var(--pf-global--Color--100);
+    cursor: pointer;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    min-height: 2.25rem;
+    box-shadow: none
+}
+
+#resolution-label {
+    vertical-align: middle
+}
+
+#orientation-label {
+    vertical-align: middle
+}
+
+.panel {
+    display: grid
+}
+
+.box-panel-heading {
+    align-items: baseline;
+    flex: auto;
+    flex-basis: 15rem;
+    background: #f0f0f0;
+
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    width: 100%;
+    position: sticky;
+}
+
+strong {
+    vertical-align: -webkit-baseline-middle
+}
+
+option {
+    padding: 2px
 }
