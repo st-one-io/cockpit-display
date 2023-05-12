@@ -1,18 +1,15 @@
 {
-    "version": "156",
+    "version": "200",
     "name": "display",
     "requires": {
-	"cockpit": "122"
+        "cockpit": "200"
     },
 
     "menu": {
-        "index": {
+        "display": {
             "label": "Display",
-            "order": 51
+            "order": 51,
+            "path": "index.html"
         }
-    },
-
-    "hacks": {
-        
     }
 }

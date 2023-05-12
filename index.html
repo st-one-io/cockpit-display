@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- 
- * Copyright 2020 ST-One
+<!--
+ * Copyright 2023 ST-One
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *  http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,131 +18,121 @@
 <html>
 
 <head>
-  <title translatable="yes">Display</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../base1/patternfly.css" type="text/css" rel="stylesheet">
-  <link href="display.css" type="text/css" rel="stylesheet">
-  <script src="../base1/jquery.js"></script>
-  <script src="../base1/cockpit.js"></script>
-  <script src="../manifests.js"></script>
-  <script src="../*/po.js"></script>
-  <script src="display.js"></script>
+    <title translatable="yes">Display</title>
+
+    <meta charset="utf-8">
+
+    <link href="../base1/cockpit.css" type="text/css" rel="stylesheet">
+    <link href="display.css" type="text/css" rel="stylesheet">
+    <link href="buttons.css" type="text/css" rel="stylesheet">
+
+    <script src="../base1/cockpit.js"></script>
+    <script src="../base1/po.js"></script>
+    <script src="utils.js"></script>
+    <script src="display.js"></script>
 </head>
 
-<body hidden>
+<body>
+    <div class="container-fluid">
+        <div class="panel panel-default">
 
-  <div class="container-fluid">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <span>Screens</span>
-        <div class="pull-right">
-          <button class="btn btn-default" id="display-refresh"><i class="fa fa-refresh"></i></button>
+            <div class="box-panel-heading">
+                <strong><span>Screens</span></strong>
+
+                <div class="pull-right">
+                    <button class="pf-c-button pf-m-secondary" id="display-refresh"><i class="fa fa-refresh"></i></button>
+                </div>
+            </div>
+
+            <div class="displays-box" id="displays-box" align="center"></div>
         </div>
-      </div>
-        <div class="displays-box" id="displays-box" align="center">
-      </div>
     </div>
-  </div>
 
-  <div class="container-fluid">
-    <div class="panel panel-default ">
-      <div class="panel-heading">
-        <strong id="display-selected-title">Select a dislay</strong>
-        <div class="pull-right">
-          <button id="display-apply" class="btn btn-primary " data-original-title="" title="">Apply</button>
+    <div class="container-fluid">
+        <div class="panel panel-default ">
+
+            <div class="box-panel-heading">
+                <strong id="display-selected-title">Select a display</strong>
+
+                <div class="pull-right">
+                    <button id="display-apply" class="pf-c-button pf-m-primary" data-original-title="" title="">Apply</button>
+                </div>
+            </div>
+
+            <table class="info-table-ct">
+                <tbody>
+                <tr id="system-info-domain">
+                    <td class="td-left">Display</td>
+
+                    <td class="button-location">
+                        <input class="form" type="checkbox" id="display-state" value="false">
+                        <span translatable="yes" id="display-state-text">ON</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td-left" id="resolution-label">Resolution</td>
+
+                    <td id="settings-group">
+                        <div class="pf-c-toolbar__item pf-m-search-filter">
+                            <select id="resolution-dropdown" class="pf-c-form-control"></select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td-left" id="orientation-label">Orientation</td>
+
+                    <td id="settings-group">
+                        <div class="pf-c-toolbar__item pf-m-search-filter">
+                            <select id="orientation-dropdown" class="pf-c-form-control">
+                                <option class="" value="normal">Normal</option>
+                                <option class="" value="inverted">Inverted</option>
+                                <option class="" value="right">Right</option>
+                                <option class="" value="left">Left</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr id="system-info-domain">
+                    <td>
+                        <a type="button" class="btn btn-link collapsible" id="advanced-button">Advanced options</a>
+                        <div class="pf-c-toolbar__item pf-m-search-filter" id="display-rate">
+                            <table>
+                                <tr>
+                                    <td class="td-left" id="td-rate">Rate</td>
+
+                                    <td class="td-right" id="rate-dropdown-col">
+                                        <select id="rate-dropdown" class="pf-c-form-control"></select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
-      <table class="info-table-ct">
-        <tbody>
-          <tr id="system-info-domain">
-            <td>Display</td>
-            <td class="button-location">
-              <input class="form" type="checkbox" id="display-state" />
-              <span translatable="yes" id="display-state-text">ON</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Resolution</td>
-            <td id="settings-group">
-              <div class="btn-group bootstrap-select dropdown col-left" id="display-resolution">
-                <button class="btn btn-default dropdown-toggle pull-left" type="button" data-toggle="dropdown">
-                  <span class="pull-left" data-toggle=""></span>
-                  <div class="caret"></div>
-                </button>
-                <ul class="dropdown-menu">
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Orientation</td>
-            <td id="settings-group">
-              <div class="btn-group bootstrap-select dropdown col-left" id="display-orientation">
-                <button class="btn btn-default dropdown-toggle pull-left" type="button" data-toggle="dropdown">
-                  <span class="pull-left" data-toggle=""></span>
-                  <div class="caret"></div>
-                </button>
-                <ul class="dropdown-menu">
-                  <li data-toggle="normal">
-                    <a>normal</a>
-                  </li>
-                  <li data-toggle="inverted">
-                    <a>inverted</a>
-                  </li>
-                  <li data-toggle="right">
-                    <a>right</a>
-                  </li>
-                  <li data-toggle="left">
-                    <a>left</a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr id="system-info-domain">
-            <td>
-              <a type="button" class="btn btn-link" data-toggle="collapse" data-target="#display-advanced">Advanced options</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="info-table-ct collapse" id="display-advanced">
-        <tbody>
-          <tr>
-            <td>Rate</td>
-            <td id="settings-group">
-              <div class="btn-group bootstrap-select dropdown col-left" id="display-rate">
-                <button class="btn btn-default dropdown-toggle pull-left" type="button" data-toggle="dropdown">
-                  <span class="pull-left" data-toggle="">Not available</span>
-                  <div class="caret"></div>
-                </button>
-                <ul class="dropdown-menu">
-                </ul>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
-  </div>
 
-  <div class="modal" id="error-popup" tabindex="-1" role="dialog" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" translatable="yes">Unexpected error</h4>
+    <div class="modal" id="error-popup" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" translatable="yes">Unexpected error</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p id="error-popup-message"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="error-popup-close" class="btn btn-primary" data-dismiss="modal" translate>Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <p id="error-popup-message"></p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-dismiss="modal" translate>Close</button>
-        </div>
-      </div>
     </div>
-  </div>
-
-
 </body>
+
+<html>
